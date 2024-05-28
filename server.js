@@ -8,9 +8,7 @@ import { fileURLToPath } from "url";
 import Connection from "./database/db.js";
 import Router from "./routes/route.js";
 
-// Create a __dirname equivalent in ES module scope
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.resolve();
 
 dotenv.config();
 
@@ -23,8 +21,13 @@ app.use("/", Router);
 // Static files
 app.use(express.static(path.join(__dirname, "./client/build")));
 
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  );
 });
 
 // Port

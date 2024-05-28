@@ -1,0 +1,125 @@
+.commentsection {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.writecomment {
+  width: 83%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.commentbox {
+  width: 100%;
+  background-color: #1a1a1a;
+  border-radius: 5px;
+  padding: 20px 20px 15px 20px;
+}
+
+.comments p {
+  margin: 0;
+  padding: 0;
+}
+
+.commentInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: end;
+}
+
+.commentInfo .date {
+  font-size: 12px;
+}
+
+.commentInfo .username {
+  font-size: 15px;
+}
+
+.comment {
+  color: #ababab;
+}
+
+.commentInfo .name {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.commentbox .hr {
+  padding: 10px 0px;
+}
+
+.writecomment textarea {
+  height: 20px;
+  width: 100%;
+  padding: 0px 10px;
+  margin: 0;
+  padding: 00px;
+  resize: none;
+  overflow: ellipse;
+}
+
+.commentbtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.commentbtn button {
+  border-radius: 90px;
+  padding: 10px 28px;
+  border: none;
+  background-image: linear-gradient(180deg, #651ec2, #731ac0);
+  color: #fff;
+}
+
+.commentscontainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.commentsdiv {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.deletecomment {
+  margin-top: 15px;
+  scale: 120%;
+  cursor: pointer;
+}
+
+.individualComment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #1a1a1a;
+  padding: 20px 35px;
+  gap: 10px;
+  border-radius: 5px;
+}
+
+.date {
+  font-weight: 400;
+}
