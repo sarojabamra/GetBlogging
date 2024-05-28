@@ -20,7 +20,7 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", Router);
 
-// Serve static files
+// Static files
 app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("*", function (req, res) {
