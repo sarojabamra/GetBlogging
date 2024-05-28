@@ -1,11 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import path from "path";
 import bodyParser from "body-parser";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import Connection from "./database/db.js";
 import Router from "./routes/route.js";
+
+// Create a __dirname equivalent in ES module scope
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -15,14 +20,14 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", Router);
 
-//static files
+// Serve static files
 app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-//port
+// Port
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () =>
