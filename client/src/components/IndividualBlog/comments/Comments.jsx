@@ -78,7 +78,7 @@ const Comments = ({ post, isAuthenticated }) => {
       <div className="commentscontainer">
         <div className="commentsdiv">
           <div className="comments">
-            {comments &&
+            {Array.isArray(comments) &&
               comments.length > 0 &&
               comments
                 .slice()

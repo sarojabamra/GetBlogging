@@ -40,7 +40,7 @@ const Edit = () => {
       }
     };
     fetchData();
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     post.username = account.username;
