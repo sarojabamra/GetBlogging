@@ -8,6 +8,17 @@
   border-radius: 20px;
 }
 
+.approve {
+  background-color: #323232;
+  margin: 0;
+  padding: 7px 30px;
+  border-radius: 5px;
+  font-weight: 400;
+  border: none;
+  color: #fff;
+  font-family: "Cabin", sans-serif;
+}
+
 .card:hover {
   background-color: #1c1c1c;
 }

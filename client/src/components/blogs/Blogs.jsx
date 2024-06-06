@@ -16,10 +16,34 @@ const Blogs = ({ isAuthenticated }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
 
+  const blacklistedKeywords = ["spam", "inappropriate", "offensive"];
+
+  const approvePost = async (postId) => {
+    //console.log("approvePost was called");
+    let response = await API.approvePost(JSON.stringify({ postId }));
+    //console.log("approved");
+    if (response.isSuccess) {
+    } else {
+      console.error("error approving post", response.msg);
+    }
+  };
+
   const filterPosts = (post) => {
     if (!post || !post.title || !post.username || !post.name) {
       return false;
     }
+
+    const containsBlacklistedKeyword = blacklistedKeywords.some((keyword) =>
+      post.title.toLowerCase().includes(keyword)
+    );
+    if (containsBlacklistedKeyword && !post.isApproved) {
+      return false;
+    }
+
+    if (!containsBlacklistedKeyword && !post.isApproved) {
+      approvePost(post._id); // Automatically approve the post
+    }
+
     const titleMatch = post.title
       .toLowerCase()
       .includes(searchTitle.toLowerCase());
@@ -32,6 +56,10 @@ const Blogs = ({ isAuthenticated }) => {
 
     const tagMatch = selectedTag ? post.tags.includes(selectedTag) : true;
     return titleMatch && userMatch && categoryMatch && tagMatch;
+  };
+
+  const filterApprovedPosts = (post) => {
+    return post && post.isApproved;
   };
 
   const handleCategoryClick = (categoryType) => {
@@ -119,6 +147,7 @@ const Blogs = ({ isAuthenticated }) => {
                 <h3>Recent Blogs</h3>
                 <div className="recentsection">
                   {posts
+                    .filter(filterApprovedPosts)
                     .slice()
                     .reverse()
                     .slice(0, 3)

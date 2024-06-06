@@ -6,6 +6,7 @@ import { DataContext } from "../../context/DataProvider";
 import Dropdown from "../dropdown/Dropdown";
 import TagInput from "../tagInput/TagInput";
 import { API } from "../../service/api";
+import { DropzoneArea } from "material-ui-dropzone";
 
 const initialPost = {
   title: "",
@@ -15,10 +16,12 @@ const initialPost = {
   category: "",
   tags: [],
   createdDate: new Date(),
+  image: "",
 };
 
 const Compose = () => {
   const [post, setPost] = useState(initialPost);
+  const [file, setFile] = useState("");
 
   const { account } = useContext(DataContext);
 
@@ -56,10 +59,32 @@ const Compose = () => {
       alert("Title, Description, and Category are required.");
       return;
     }
+
     let response = await API.createPost(post);
 
-    if (response.status === 201) {
+    if (response.isSuccess) {
       navigate("/blogs");
+    }
+  };
+
+  useEffect(() => {
+    const getImage = async () => {
+      if (file) {
+        const data = new FormData();
+        data.append("name", file.name);
+        data.append("file", file);
+
+        const response = await API.uploadFile(data);
+        post.image = response.data;
+      }
+    };
+    getImage();
+  }, [file]);
+
+  const handleFileChange = (files) => {
+    console.log("Files changed:", files); // Add this line to log the files array
+    if (files.length > 0) {
+      setFile(files[0]);
     }
   };
 
@@ -97,8 +122,26 @@ const Compose = () => {
               </div>
             </div>
           </div>
+          <div className="hr" />
+          <div className="dropzone">
+            <DropzoneArea
+              onChange={handleFileChange}
+              acceptedFiles={["image/*"]}
+              maxFileSize={5000000}
+              filesLimit={1}
+              dropzoneText="Drag and drop an image here or click."
+              previewGridProps={{
+                container: { spacing: 1, direction: "row" },
+                item: { xs: 12 },
+                justify: "center",
+              }}
+              previewGridClasses={{ container: "dropzone-preview-container" }}
+              classes={{
+                icon: "custom-dropzone-icon-compose",
+              }}
+            />
+          </div>
           <div className="text">
-            <div className="hr" />
             <textarea
               placeholder="Share your thoughts with the world. Start typing..."
               name="description"

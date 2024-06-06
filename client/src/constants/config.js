@@ -35,4 +35,10 @@ export const SERVICE_URLS = {
   newComment: { url: "/comment/new", method: "POST" },
   getAllComments: { url: "/comments", method: "GET", query: true },
   deleteComment: { url: "/comment/delete", method: "DELETE", query: true },
+  getAllUsers: { url: "/users", method: "GET" },
+  updateIsAdmin: { url: "/user/admin", method: "PUT", query: true },
+  deleteUser: { url: "/user/delete", method: "DELETE", query: true },
+  getAllUnapprovedPosts: { url: "/unapprovedposts", method: "GET" },
+  approvePost: { url: "/approve-post", method: "PATCH", query: true },
+  uploadFile: { url: "/file/upload", method: "POST" },
 };

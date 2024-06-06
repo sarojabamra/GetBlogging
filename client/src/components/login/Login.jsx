@@ -15,7 +15,7 @@ const loginInitialValues = {
   password: "",
 };
 
-const Login = ({ isUserAuthenticated }) => {
+const Login = ({ isUserAuthenticated, isUserAdmin }) => {
   const [loginPage, setLoginPage] = useState("signin");
   const [signup, setSignup] = useState(signupInitialValues);
   const [error, setError] = useState("");
@@ -72,6 +72,11 @@ const Login = ({ isUserAuthenticated }) => {
       });
 
       isUserAuthenticated(true);
+      console.log(response.data.isAdmin);
+
+      if (response.data.isAdmin) {
+        isUserAdmin(true);
+      }
 
       navigate("/");
     } else {

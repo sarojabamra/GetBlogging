@@ -2,7 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ isAuthenticated }) => {
+const Navbar = ({ isAuthenticated, isAdmin }) => {
   return (
     <>
       <div className="navbar">
@@ -19,6 +19,15 @@ const Navbar = ({ isAuthenticated }) => {
           <Link to={isAuthenticated ? `/compose` : `/signin`}>
             <p>Compose</p>
           </Link>
+          {isAdmin ? (
+            <div>
+              <Link to="/admin">
+                <p>Dashboard</p>
+              </Link>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
         {isAuthenticated ? (
           <div className="buttons">

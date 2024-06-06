@@ -18,6 +18,13 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", Router);
 
+app.post("/api", (req, res) => {
+  // Handle the incoming JSON data
+  const jsonData = req.body;
+  console.log(jsonData);
+  res.json({ message: "Data received successfully" });
+});
+
 // Static files
 app.use(express.static(path.join(__dirname, "./client/build")));
 

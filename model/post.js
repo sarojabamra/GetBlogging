@@ -32,6 +32,15 @@ const postSchema = mongoose.Schema({
     type: Date,
     required: true,
   },
+
+  isApproved: {
+    type: Boolean,
+    default: false,
+  },
+  image: {
+    type: String,
+    required: false,
+  },
 });
 
 const post = mongoose.model("post", postSchema);

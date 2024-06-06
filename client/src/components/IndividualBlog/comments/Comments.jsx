@@ -32,10 +32,15 @@ const Comments = ({ post, isAuthenticated }) => {
 
   const addComment = async (e) => {
     if (isAuthenticated) {
-      let response = await API.newComment(comment);
-      if (response.isSuccess) {
-        setComment(initialValues);
-        setToggle((prevState) => !prevState);
+      if (!comment.postComment) {
+        alert("The comment box should not be empty.");
+        return;
+      } else {
+        let response = await API.newComment(comment);
+        if (response.isSuccess) {
+          setComment(initialValues);
+          setToggle((prevState) => !prevState);
+        }
       }
     } else {
       navigate("/signin");
@@ -47,7 +52,6 @@ const Comments = ({ post, isAuthenticated }) => {
       let response = await API.getAllComments(post._id);
 
       if (response.isSuccess) {
-        console.log("Fetched comments:", response.data);
         setComments(response.data);
       }
     };

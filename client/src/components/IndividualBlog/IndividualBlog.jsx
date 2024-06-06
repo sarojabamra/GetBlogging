@@ -42,6 +42,16 @@ const IndividualBlog = ({ isAuthenticated }) => {
     }
   };
 
+  const renderContent = (content) => {
+    if (!content) return null;
+    return content.split("\n").map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
+
   return (
     <>
       <div className="details">
@@ -86,7 +96,16 @@ const IndividualBlog = ({ isAuthenticated }) => {
           </div>
           <div className="text">
             <div className="hr" />
-            <p className="description">{post.description}</p>
+            {post.image ? (
+              <div className="imagediv">
+                <img src={post.image} alt="Blog Image" className="blog-image" />
+              </div>
+            ) : (
+              <div></div>
+            )}
+            <p className="description">
+              {post && renderContent(post.description)}
+            </p>
           </div>
         </div>
         <Comments post={post} isAuthenticated={isAuthenticated} />

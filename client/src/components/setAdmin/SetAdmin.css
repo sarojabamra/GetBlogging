@@ -1,0 +1,52 @@
+.setadmin-page {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 14px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 5px;
+}
+
+input {
+  background-color: #e1e1e1;
+}
+
+.note {
+  color: #000;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 15px;
+}
+
+.setadmin {
+  color: #000;
+  padding: 0px 0px;
+}
+
+.form button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  height: 50px;
+  font-family: "Cabin", sans-serif;
+  border: none;
+  font-size: 20px;
+  border-radius: 5px;
+}

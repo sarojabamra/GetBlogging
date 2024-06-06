@@ -1,0 +1,10 @@
+.admin-page {
+  position: absolute;
+  margin-top: 140px;
+  width: 85%;
+  padding: 10px 100px;
+}
+.userlist {
+  font-size: 16px;
+  margin-bottom: -18px !important;
+}

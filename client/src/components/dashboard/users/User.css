@@ -1,0 +1,42 @@
+.individualUser {
+  display: grid;
+  grid-template-columns: 4fr 1fr !important;
+  gap: 20px;
+}
+
+.individualUser p {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10px;
+  padding: 0;
+}
+
+.dltuser {
+  margin-top: 10px;
+  scale: 130%;
+}
+
+.userlist {
+  margin-top: 25px;
+  color: #989898;
+  margin-bottom: -15px;
+}
+
+.dltuser:hover {
+  cursor: pointer;
+}
+
+.individualUser .name {
+  font-size: 18px;
+}
+
+.userBox {
+  padding: 20px 25px;
+  margin-top: 8px;
+  border-radius: 5px;
+  background-color: #1a1a1a;
+}
+
+.userBox:hover {
+  background-color: #1c1c1c;
+}

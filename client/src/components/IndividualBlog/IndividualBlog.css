@@ -9,6 +9,22 @@
   border-radius: 20px;
 }
 
+.details .hr {
+  margin-bottom: 10px;
+}
+
+.imagediv {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.blog-image {
+  transform: translateY(-100px);
+  width: 100%;
+}
+
 .tag p {
   margin: 0;
   padding: 0;

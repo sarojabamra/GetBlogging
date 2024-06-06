@@ -1,25 +1,31 @@
 import Post from "../model/post.js";
+import mongoose from "mongoose";
 
 export const createPost = async (request, response) => {
   try {
-    const post = new Post(request.body);
-    await post.save();
-    return response.status(201).json({ message: "Post saved successfully" });
+    const post = await new Post(request.body);
+    post.save();
+
+    response.status(200).json("Post saved successfully");
   } catch (error) {
-    if (error.name === "ValidationError") {
-      return response
-        .status(400)
-        .json({ message: error.message, errors: error.errors });
-    }
-    return response
-      .status(500)
-      .json({ message: "Internal server error", error });
+    response.status(500).json(error);
   }
 };
 
 export const getAllPosts = async (request, response) => {
   try {
-    let posts = await Post.find({});
+    let posts = await Post.find();
+
+    return response.status(200).json(posts);
+  } catch (error) {
+    return response.status(500).json({ msg: error.message });
+  }
+};
+
+export const getAllUnapprovedPosts = async (request, response) => {
+  try {
+    // Filter posts by isApproved: false
+    let posts = await Post.find({ isApproved: false });
 
     return response.status(200).json(posts);
   } catch (error) {
@@ -64,5 +70,31 @@ export const deletePost = async (request, response) => {
   } catch (error) {
     console.log(Post.findById(request.params.id));
     return response.status(500).json({ error: error.message });
+  }
+};
+
+export const approvePost = async (req, res) => {
+  console.log("aprrovePost function was called with postId:", req.params.id);
+  try {
+    const data = req.params.id;
+    const { postId } = JSON.parse(data);
+    //console.log(userId);
+
+    const objectId = new mongoose.Types.ObjectId(postId);
+    //console.log(objectId);
+
+    const updatedPost = await Post.findByIdAndUpdate(
+      objectId,
+      { isApproved: true },
+      { new: true }
+    );
+
+    if (!updatedPost) {
+      return res.status(404).json({ msg: "Post not found" });
+    }
+
+    res.status(200).json(updatedPost);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
   }
 };

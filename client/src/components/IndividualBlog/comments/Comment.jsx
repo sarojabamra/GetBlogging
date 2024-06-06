@@ -1,6 +1,6 @@
 import React from "react";
 import "./Comments.css";
-import { MdDelete } from "react-icons/md";
+
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { API } from "../../../service/api";
 import { useContext } from "react";

@@ -7,7 +7,7 @@ const API_URL =
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
-  timeout: 100000,
+  timeout: 100000000000,
   headers: {
     "content-type": "application/json",
   },
@@ -90,9 +90,10 @@ for (const [key, value] of Object.entries(SERVICE_URLS)) {
       responseType: value.responseType,
       headers: {
         authorization: getAccessToken(),
-        Accept: "application/json",
+        Accept: "application/json, form-data",
         "Content-Type": "application/json",
       },
+
       TYPE: getType(value, body),
       onUploadProgress: function (progressEvent) {
         if (showUploadProgress) {
