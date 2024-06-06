@@ -54,7 +54,11 @@ const Blogs = ({ isAuthenticated }) => {
       ? post.category === selectedCategory
       : true;
 
-    const tagMatch = selectedTag ? post.tags.includes(selectedTag) : true;
+    const tagMatch = selectedTag
+      ? post.tags
+          .map((tag) => tag.toLowerCase())
+          .includes(selectedTag.toLowerCase())
+      : true;
     return titleMatch && userMatch && categoryMatch && tagMatch;
   };
 

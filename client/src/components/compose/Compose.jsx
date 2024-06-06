@@ -100,9 +100,16 @@ const Compose = () => {
                 name="title"
                 onChange={(e) => handleChange(e)}
               />
+              <p className="composepassage">
+                Welcome to the Compose Page! Share your stories, insights, and
+                creativity with our community. Use the editor to format your
+                content, add images, and include tags to enhance visibility.
+                Ensure your post aligns with our guidelines, then hit 'Publish'
+                to share your work with the world.
+              </p>
               <p className="user">{account.username}</p>
               <p className="name">
-                <span>Author: </span>
+                <span>Logged in as: </span>
                 {post.name}
               </p>
 

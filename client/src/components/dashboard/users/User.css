@@ -1,7 +1,13 @@
 .individualUser {
-  display: grid;
-  grid-template-columns: 4fr 1fr !important;
-  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.individualUser .row {
+  align-items: center;
+  gap: 3px;
 }
 
 .individualUser p {
@@ -11,9 +17,12 @@
   padding: 0;
 }
 
+.icon2 {
+  transform: scale(140%);
+}
+
 .dltuser {
-  margin-top: 10px;
-  scale: 130%;
+  margin-right: 10px;
 }
 
 .userlist {
@@ -38,5 +47,5 @@
 }
 
 .userBox:hover {
-  background-color: #1c1c1c;
+  background-color: #1f1f1f;
 }
