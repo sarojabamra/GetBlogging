@@ -110,10 +110,10 @@ const Edit = () => {
                 onChange={(e) => handleChange(e)}
               />
               <p className="composepassage">
-                Welcome to the Edit Page! Here you can update and refine your
-                existing posts. Use the editor to make any necessary changes,
-                add new images, or update tags. Once you're satisfied with your
-                revisions, click 'Update' to publish the updated post.
+                Welcome to the Edit Page! Here you can update your existing
+                posts. Use the editor to make any necessary changes, add new
+                images, or update tags. Click 'Update' to publish the updated
+                post.
               </p>
               <p className="user">{account.username}</p>
               <div>

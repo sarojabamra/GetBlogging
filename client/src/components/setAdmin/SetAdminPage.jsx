@@ -10,7 +10,7 @@ const SetAdminPage = () => {
       const response = await API.updateIsAdmin(JSON.stringify({ userId }));
 
       console.log(response);
-      if (response.status === 200) {
+      if (response.isSuccess) {
         alert("User updated to admin successfully");
         setUserId("");
       }

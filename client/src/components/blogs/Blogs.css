@@ -136,6 +136,7 @@ button {
   background-color: #232323;
   border: none;
   outline: none;
+  margin: 0 !important;
   caret-color: #fff;
 }
 

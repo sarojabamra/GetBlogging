@@ -88,6 +88,8 @@ const Compose = () => {
     }
   };
 
+  console.log(file);
+
   return (
     <>
       <div className="compose">
@@ -101,11 +103,10 @@ const Compose = () => {
                 onChange={(e) => handleChange(e)}
               />
               <p className="composepassage">
-                Welcome to the Compose Page! Share your stories, insights, and
-                creativity with our community. Use the editor to format your
-                content, add images, and include tags to enhance visibility.
-                Ensure your post aligns with our guidelines, then hit 'Publish'
-                to share your work with the world.
+                Welcome to the Compose Page! Share your stories with us. Use the
+                editor to add your content, add images, and include tags to
+                enhance visibility. Hit 'Publish' to share your work with the
+                world.
               </p>
               <p className="user">{account.username}</p>
               <p className="name">
